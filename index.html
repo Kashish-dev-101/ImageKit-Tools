@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Imagekit Tools</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <img src="https://ik.imagekit.io/Kashish12345/Screenshot%202025-06-18%20at%2010.07.57%E2%80%AFPM.png?tr=w-100" alt="ImageKit Logo">
+    <h1>Imagekit Tools</h1>
+  </header>
+
+  <main>
+    <!-- Compact Auth Section -->
+    <div class="auth-card">
+      <h2>🔐 Authentication</h2>
+      <input type="password" id="globalPrivateKey" placeholder="Enter your private API key..." />
+    </div>
+  
+    <!-- Tools Grid -->
+    <div class="tools-grid">
+      <div class="tool-card">
+        <h2>🗑️ Delete Assets in Folder</h2>
+        <input type="text" id="folderInput" placeholder="Enter folder name..." />
+        <button id="deleteButton">Delete Assets</button>
+        <div id="output"></div>
+      </div>
+  
+      <div class="tool-card">
+        <h2>🧹 Delete File Version</h2>
+        <input type="text" id="filePathInput" placeholder="Enter full file path..." />
+        <button id="deleteVersionButton">Delete File Versions</button>
+        <div id="versionOutput"></div>
+      </div>
+  
+      <div class="tool-card">
+        <h2>📊 Count Assets</h2>
+        <input type="text" id="countFolderInput" placeholder="Enter folder path to count assets..." />
+      
+        <div class="button-group">
+          <button id="countFilesButton">Count Files</button>
+          <button id="countFoldersButton">Count Folders</button>
+        </div>
+      
+        <div id="countOutput"></div> 
+      </div>
+      
+    </div>
+  </main>
+  
+
+  <footer>
+    Built with ❤️ for internal ImageKit operations
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
