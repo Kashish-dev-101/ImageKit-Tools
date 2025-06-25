@@ -224,3 +224,16 @@ main {
   background-color: #005bb5;
 }
 
+#csvUploadOutput {
+  text-align: left;
+  margin-top: 16px;
+  font-size: 0.95rem;
+  background: #f1f3f5;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #eee;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+

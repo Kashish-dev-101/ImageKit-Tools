@@ -33,6 +33,16 @@ console.log(privateKey);
 const countOutput = document.querySelector("#countOutput");
 console.log(countOutput);
 
+const uploadCSVBtn = document.querySelector("#uploadCSVButton");
+console.log(uploadCSVBtn);
+
+const csvUploadOutput = document.querySelector("#csvUploadOutput");
+console.log(csvUploadOutput);
+
+const fileCSVInput = document.querySelector("#csvInput");
+console.log(fileCSVInput);
+
+
 
 
 const baseURL = "https://api.imagekit.io/v1";
@@ -313,7 +323,104 @@ countFolderBtn.addEventListener("click", async() => {
 });
 
 
+// Upload file from a CSV 
+// Read file from the CSV 
+// Get the files from the CSV and send those as parameter in the upload API 
 
+
+uploadCSVBtn.addEventListener("click", (e) => {
+  console.log("upload button was clicked");
+  // const target = e.target;
+  // console.log(target);
+
+  const fileList = fileCSVInput.files;
+  // console.log(fileList);
+
+  const file = fileCSVInput.files[0];
+  // console.log(file);
+
+  const fileName = fileCSVInput.files[0].name;
+  // console.log(fileName);
+
+  const reader = new FileReader();
+  // console.log(reader);
+
+  reader.addEventListener("load", async (event) => {
+    console.log(event);
+    const csvText = event.target.result;
+    const lines = csvText.trim().split("\n");
+    console.log(csvText);
+    console.log(lines);
+
+    const imageDataArray = lines
+      .filter(line => line.trim() !== "") // skip empty lines
+      .map(line => {
+        const values = line.split(",");
+        console.log(values);
+        return {
+          url: values[0]?.trim(),
+          fileName: values[1]?.trim(),
+          folderName: values[2]?.trim()
+          // tags: values[2]?.split(",").map(t => t.trim()) || []
+        };
+      });
+
+    console.log(imageDataArray);
+
+    for (let imagedata of imageDataArray) {
+      console.log(imagedata);
+      console.log(imagedata.url);
+      console.log(imagedata.fileName);
+      console.log(imagedata.folderName);
+      // console.log(imagedata.tags);
+
+      const privateKeyValue = privateKey.value.trim();
+      console.log(privateKeyValue);
+
+      const url = 'https://upload.imagekit.io/api/v2/files/upload';
+      const form = new FormData();
+      form.append('file', imagedata.url);
+      form.append('fileName', imagedata.fileName);
+      // form.append('token', '');
+      // form.append('useUniqueFileName', '');
+      // form.append('tags', '');
+      form.append('folder', imagedata.folderName);
+      // form.append('isPrivateFile', '');
+      // form.append('isPublished', '');
+      // form.append('customCoordinates', '');
+      // form.append('responseFields', '');
+      // form.append('extensions', '');
+      // form.append('webhookUrl', '');
+      // form.append('overwriteFile', '');
+      // form.append('overwriteAITags', '');
+      // form.append('overwriteTags', '');
+      // form.append('overwriteCustomMetadata', '');
+      // form.append('customMetadata', '');
+      // form.append('transformation', '');
+      // form.append('checks', '');
+
+      const options = {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          Authorization: `Basic ${btoa(`${privateKeyValue}:`)}`
+        }
+      };
+
+      options.body = form;
+
+      try {
+        const response = await fetch(url, options);
+        const data = await response.json();
+        console.log(data);
+      } catch (err) {
+        console.error(" Network or unexpected error:", err.message || err);
+      }
+    }
+  });
+
+  reader.readAsText(file);
+});
 
 
 
