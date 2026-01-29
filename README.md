@@ -2,7 +2,7 @@
 
 A lightweight web utility for managing assets in your ImageKit account — built for internal operations and productivity automation.
 
-🔗 **[Live Demo](https://your-username.github.io/ImageKit-Tools)**  
+🔗 **[Live Demo](https://kashish-dev-101.github.io/ImageKit-Tools/)**  
 _(Replace with your actual GitHub Pages link)_
 
 ---
