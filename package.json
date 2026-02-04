@@ -1,0 +1,14 @@
+{
+  "name": "imagekit-tools",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Ashish",
+  "license": "MIT",
+  "description": "Node.js API for ImageKit asset management tools",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
