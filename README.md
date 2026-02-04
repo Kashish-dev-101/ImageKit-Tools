@@ -9,23 +9,31 @@ A lightweight web utility for managing assets in your ImageKit account — built
 ## Features
 
 ### Delete Assets in Folder
+
 Delete all assets inside a folder with a single click.
+
 - Handles pagination (supports folders with 1000+ assets)
 - Uses [Delete File API](https://imagekit.io/docs/api-reference/media-api/delete-file)
 
 ### Delete File Versions
+
 Remove non-current versions of any specific file using its name.
+
 - Lists all versions and deletes non-current ones
 - Uses [List File Versions API](https://imagekit.io/docs/api-reference/media-api/list-file-versions) and [Delete File Version API](https://imagekit.io/docs/api-reference/media-api/delete-file-version)
 
 ### Count Assets
+
 Quickly count contents inside a folder:
+
 - Files count
 - Subfolders count
 - Uses [List Files API](https://imagekit.io/docs/api-reference/media-api/list-files)
 
 ### Upload from CSV
+
 Bulk upload images from URLs using a CSV file.
+
 - CSV format: `url,fileName,folderName`
 - Uses [Upload File API](https://imagekit.io/docs/api-reference/upload-api/server-side-upload)
 
@@ -91,6 +99,7 @@ Server runs on `http://localhost:3000`
 ### Endpoints
 
 **Delete Assets in Folder**
+
 ```bash
 curl -X POST http://localhost:3000/delete-assets \
   -H "Content-Type: application/json" \
@@ -98,6 +107,7 @@ curl -X POST http://localhost:3000/delete-assets \
 ```
 
 **Delete File Versions**
+
 ```bash
 curl -X POST http://localhost:3000/delete-versions \
   -H "Content-Type: application/json" \
@@ -105,6 +115,7 @@ curl -X POST http://localhost:3000/delete-versions \
 ```
 
 **Count Files**
+
 ```bash
 curl -X POST http://localhost:3000/count-files \
   -H "Content-Type: application/json" \
@@ -112,6 +123,7 @@ curl -X POST http://localhost:3000/count-files \
 ```
 
 **Count Folders**
+
 ```bash
 curl -X POST http://localhost:3000/count-folders \
   -H "Content-Type: application/json" \
@@ -119,6 +131,7 @@ curl -X POST http://localhost:3000/count-folders \
 ```
 
 **Upload from URLs**
+
 ```bash
 curl -X POST http://localhost:3000/upload-from-urls \
   -H "Content-Type: application/json" \
@@ -157,13 +170,13 @@ curl -X POST http://localhost:3000/upload-from-urls \
 
 ```javascript
 // Example: Count files in a folder
-const response = await fetch('http://localhost:3000/count-files', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
+const response = await fetch("http://localhost:3000/count-files", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
   body: JSON.stringify({
-    folderPath: '/products',
-    privateKey: 'private_xxxx'
-  })
+    folderPath: "/products",
+    privateKey: "private_xxxx",
+  }),
 });
 
 const data = await response.json();
@@ -182,13 +195,13 @@ console.log(data); // { success: true, fileCount: 150, folderPath: "/products" }
 
 ## API Reference
 
-| Feature | API Used |
-|---------|----------|
-| List Files | [List Files API](https://imagekit.io/docs/api-reference/media-api/list-files) |
-| Delete File | [Delete File API](https://imagekit.io/docs/api-reference/media-api/delete-file) |
-| List Versions | [List File Versions API](https://imagekit.io/docs/api-reference/media-api/list-file-versions) |
+| Feature        | API Used                                                                                        |
+| -------------- | ----------------------------------------------------------------------------------------------- |
+| List Files     | [List Files API](https://imagekit.io/docs/api-reference/media-api/list-files)                   |
+| Delete File    | [Delete File API](https://imagekit.io/docs/api-reference/media-api/delete-file)                 |
+| List Versions  | [List File Versions API](https://imagekit.io/docs/api-reference/media-api/list-file-versions)   |
 | Delete Version | [Delete File Version API](https://imagekit.io/docs/api-reference/media-api/delete-file-version) |
-| Upload File | [Server-side Upload API](https://imagekit.io/docs/api-reference/upload-api/server-side-upload) |
+| Upload File    | [Server-side Upload API](https://imagekit.io/docs/api-reference/upload-api/server-side-upload)  |
 
 ---
 
